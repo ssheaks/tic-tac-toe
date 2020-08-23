@@ -31,31 +31,29 @@ end
 -- is board full
 ----------------------------------------------
 function board_full()
-  -- TODO:
-  -- Loop all positions of the board
-  -- and check if they are all populated
-  -- returning true (full) or false (not full)
+  for i,v in ipairs(board) do
+    for j,val in ipairs(v) do
+      if val == " " then
+        return false
+      end
+    end
+  end
+  return true
 end
 
 -----------------------------------------------
 -- function to check and return the winnner
 -----------------------------------------------
 function check_winner()
-  -- TODO:
-  -- Check all rows, columsn, and diagonals
-  -- to see if there is a winner.
   local result
-  print(board[1][1])
   -- check diagonals
   if board[1][1] ~= " " then
-    print("oh hey")
     if (board[1][1] == board[2][2]) and (board[1][1] == board[3][3]) then
         result = board[1][1]
         return result
     end
   end
   if board[1][3] ~= " " then
-    print("oh hey")
     -- check diagonals
     if (board[1][3] == board[2][2]) and (board[1][3] == board[3][1]) then
         result = board[1][3]
