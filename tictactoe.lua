@@ -44,7 +44,42 @@ function check_winner()
   -- TODO:
   -- Check all rows, columsn, and diagonals
   -- to see if there is a winner.
-  -- If there is one, return "X" or "O"
+  local result
+  print(board[1][1])
+  -- check diagonals
+  if board[1][1] ~= " " then
+    print("oh hey")
+    if (board[1][1] == board[2][2]) and (board[1][1] == board[3][3]) then
+        result = board[1][1]
+        return result
+    end
+  end
+  if board[1][3] ~= " " then
+    print("oh hey")
+    -- check diagonals
+    if (board[1][3] == board[2][2]) and (board[1][3] == board[3][1]) then
+        result = board[1][1]
+        return result
+    end
+  end
+  --check cols
+    for i=1, 3 do
+      if board[1][i] ~= " " then
+        if (board[1][i] == board[2][i]) and (board[1][i] == board[3][i]) then
+            result = board[1][i]
+            return result
+        end
+      end
+    end
+  --check rows
+  for i,v in ipairs(board) do
+    if v[1] ~= " " then
+      if (v[1] == v[2]) and (v[1] == v[3]) then
+        result = v[1]
+        return result
+      end
+    end
+  end
 end
 
 -----------------------------------------------
@@ -83,7 +118,6 @@ while not game_over do
 
   -- check if there is a winner
   local winner = check_winner()
-
   if winner ~= nil then
     display_board()
     print("Winner is "..winner)
