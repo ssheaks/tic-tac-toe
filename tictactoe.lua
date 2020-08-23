@@ -121,6 +121,7 @@ while not game_over do
     print("Winner is "..winner)
     game_over = true
   elseif board_full() then
+    displa()
     print("Tie")
     game_over = true
   end
