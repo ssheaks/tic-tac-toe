@@ -20,13 +20,10 @@ end
 -- display the board table
 ----------------------------------------------
 function display_board()
-  -- TODO:
-  -- Loop all positions of the board
-  -- and display the values in the console
+  local header = {1, 2, 3}
+  print("  "..header[1].."   "..header[2].."   "..header[3])
   for i,v in ipairs(board) do
-    for j,w in ipairs(v) do
-      print(w)
-    end
+    print(i.."["..v[1].."] ["..v[2].."] ["..v[3].."]")
   end
 end
 
