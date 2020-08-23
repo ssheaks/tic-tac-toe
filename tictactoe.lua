@@ -58,7 +58,7 @@ function check_winner()
     print("oh hey")
     -- check diagonals
     if (board[1][3] == board[2][2]) and (board[1][3] == board[3][1]) then
-        result = board[1][1]
+        result = board[1][3]
         return result
     end
   end
