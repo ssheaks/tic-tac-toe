@@ -51,7 +51,7 @@ end
 -- game starts
 -----------------------------------------------
 local player = "X"
-local move = 1
+local move = 0
 local game_over = false
 
 clear_board()
@@ -60,11 +60,6 @@ clear_board()
 while not game_over do
   display_board()
 
-  print("Enter the row you want to place the symbol "..player..": ")
-  local row_to_play = io.read("*n")
-  print("Enter the col you want to place the symbol "..player..": ")
-  local col_to_play = io.read("*n")
-
   -- assign current player if the move is even or odd
   if move % 2 == 0 then
     player = "X"
@@ -72,7 +67,19 @@ while not game_over do
     player = "O"
   end
 
-  move = move + 1
+  print("Enter the row you want to place the symbol "..player..": ")
+  local row_to_play = io.read("*n")
+  print("Enter the col you want to place the symbol "..player..": ")
+  local col_to_play = io.read("*n")
+
+  -- assign move to the board
+  if board[row_to_play][col_to_play] ~= " " then
+    print("This square is already claimed. Please pick a different square")
+  else
+    board[row_to_play][col_to_play] = player
+    move = move + 1
+  end
+  
 
   -- check if there is a winner
   local winner = check_winner()
